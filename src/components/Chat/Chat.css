@@ -1,0 +1,72 @@
+.outerContainer {
+    padding: 1em 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.memberContainer {
+    display: flex;
+    flex-direction: column;
+}
+.member {
+    overflow: scroll;
+}
+
+.member-heading {
+    width: 100%;
+    font-family: 'Lobster', cursive;
+    padding: 0em 4em 0 4em;
+}
+
+.column span{
+    padding: .6em 0 0 .8em;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+    padding: 1em 1em 1em 2em;
+}
+.column p {
+    margin: .5em 0 0 1.5em;
+    font-size: large;
+}
+.shortname {
+    color: white;
+    align-self: center;
+}
+
+.user-icon {
+    margin: .5em 0 0 3em;
+}
+
+.chat-container {
+    width: 500px;
+    height: 500px;
+}
+
+.message-input {
+    position: absolute;
+    bottom: -1em;
+    left: 0;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.chat-container {
+    margin-top: 15px;
+}
+
+.chat-container-screen {
+    overflow: scroll;
+}

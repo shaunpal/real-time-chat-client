@@ -1,0 +1,47 @@
+.messageContainerAll {
+    display: flex;
+    justify-content: center;
+}
+.messagetoall {
+    font-size: medium;
+    color: rgb(39, 39, 39);
+    padding: .5em 0 0 0;
+    border-radius: 10px;
+    width: 240px;
+    text-align: center;
+}
+
+.messagetoall p {
+    border-radius: 10px;
+    background-color: rgba(220, 220, 220, 0.932);
+    opacity: 0.8;
+}
+.messageContainer-start {
+    display: flex;
+    flex-direction: column;
+}
+.messageContainer-start p {
+    padding: 0;
+    padding: .2em 0 0 .3em;
+    margin: 0;
+}
+.card-start {
+    max-width: 240px;
+    width: 150px;
+    padding: .1em 0 1em .5em;
+    border-radius: 7px;
+    margin-top: .3em;
+}
+
+.card-end {
+    max-width: 240px;
+    width: 150px;
+    padding: .5em .6em 1em 1em;
+    border-radius: 7px;
+    background-color: aquamarine;
+    opacity: 0.8;
+    margin-top: .3em;
+}
+p.div-name {
+    top: 0;
+}
