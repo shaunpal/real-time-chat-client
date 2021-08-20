@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import io from 'socket.io-client';
 import './Chat.css';
 import Screen  from '../Screen/Screen';
+import { FaUser } from 'react-icons/fa';
 
 let socket;
 
@@ -62,11 +63,9 @@ const Chat = ({ location }) => {
                 <div className="member">
                     {users.map((user) => (
                         <div className="column" key={user.id}>
-                            <span className="shortname" style={{backgroundColor: `${user.color}`}}>{user.name.substring(0, 2).toUpperCase()}</span>
+                            <span className="shortname" style={(user.name === name && user.clientid === id)? {backgroundColor: `${user.color}`, borderWidth: "4px", borderColor: "#afff03" }: {backgroundColor: `${user.color}`}}>{user.name.substring(0, 2).toUpperCase()}</span>
                             <p style={{color: `${user.color}`}}>{user.name}</p>
-                            {(user.name === name && user.clientid === id)? <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-person-fill user-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            </svg> : null}
+                            {(user.name === name && user.clientid === id)? <div className="user-icon"><FaUser size={24}/></div> : null}
                         </div>
                     ))}
                 </div>
@@ -74,7 +73,7 @@ const Chat = ({ location }) => {
             <div className="card">
                 <div className="container chat-container">
 
-                <Screen messages={messages} name={name} clientid={id} />
+                <Screen className="screen-container" messages={messages} name={name} clientid={id} />
 
                 <div className="input-group message-input mb-3">
                     <input type="text" className="form-control form-input-field" placeholder="Type message..." aria-label="Type message..." aria-describedby="basic-addon2"
