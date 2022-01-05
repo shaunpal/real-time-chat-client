@@ -16,7 +16,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
-    const ENDPOINT = "http://localhost:5001/";
+    const ENDPOINT = "https://real-time-chat-server.herokuapp.com/";
     const extensions = ["txt", "jpeg", "jpg", "png", "mp3", "mp4", "gif", "pdf"];
 
     useEffect(() => {
