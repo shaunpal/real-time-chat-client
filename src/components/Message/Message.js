@@ -21,7 +21,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         <img 
                             style={{ maxWidth: "10em"}}
                             src={text}
-                            alt={'photo'}
+                            alt={'media'}
                         />
                         :
                         text.includes("data:video")?
@@ -60,7 +60,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                             <img 
                                 style={{ maxWidth: "8em" }}
                                 src={text}
-                                alt={'photo'}
+                                alt={'media'}
                             />
                         </div>
                         :

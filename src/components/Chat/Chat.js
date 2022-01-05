@@ -66,6 +66,7 @@ const Chat = ({ location }) => {
             if(extensions.includes(ext)){
                 let reader = new FileReader();
                 reader.readAsDataURL(files[i]);
+                // eslint-disable-next-line
                 reader.onloadend = (evt) => {
                     socket.emit('sendMessage', evt.target.result, () => setMessage(''));
                 }
