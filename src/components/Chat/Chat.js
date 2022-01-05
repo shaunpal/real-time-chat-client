@@ -112,7 +112,7 @@ const Chat = ({ location }) => {
                             )}
                             </Dropzone>
                         </button>
-                        <button className="btn btn-outline-secondary" type="button"
+                        <button className="btn btn-secondary" type="button"
                         onClick={event => message !== ""? sendMessage(event) : null}>Send</button>
                     </div>
                     </div>
