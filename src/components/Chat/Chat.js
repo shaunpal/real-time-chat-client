@@ -3,7 +3,10 @@ import queryString from 'query-string';
 import io from 'socket.io-client';
 import './Chat.css';
 import Screen  from '../Screen/Screen';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaUpload } from 'react-icons/fa';
+import Dropzone from 'react-dropzone';
+
+
 
 let socket;
 
@@ -13,7 +16,8 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
-    const ENDPOINT = "https://real-time-chat-server.herokuapp.com/";
+    const ENDPOINT = "http://localhost:5001/";
+    const extensions = ["txt", "jpeg", "jpg", "png", "mp3", "mp4", "gif", "pdf"];
 
     useEffect(() => {
         const { name } = queryString.parse(location.search);
@@ -55,7 +59,21 @@ const Chat = ({ location }) => {
         if(message)
             socket.emit('sendMessage', message, () => setMessage(''));
     }
+   
+    const uploadEvent = (files) => {
+        for(let i =0; i < files.length; i++){
+            let ext = files[i].name.split(".").pop();
+            if(extensions.includes(ext)){
+                let reader = new FileReader();
+                reader.readAsDataURL(files[i]);
+                reader.onloadend = (evt) => {
+                    socket.emit('sendMessage', evt.target.result, () => setMessage(''));
+                }
+            }
+        }
+        
 
+    }
     return(
         <div className="outerContainer">
             <div className="memberContainer card">
@@ -81,6 +99,18 @@ const Chat = ({ location }) => {
                     onChange={(event) => setMessage(event.target.value)}
                     onKeyPress={event => event.key === "Enter"? sendMessage(event) : null} />
                     <div className="input-group-append">
+                        <button className="btn">
+                            <Dropzone onDrop={uploadEvent}>
+                            {({getRootProps, getInputProps}) => (
+                                <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <FaUpload size={20} /> 
+                                </div>
+                                </section>
+                            )}
+                            </Dropzone>
+                        </button>
                         <button className="btn btn-outline-secondary" type="button"
                         onClick={event => message !== ""? sendMessage(event) : null}>Send</button>
                     </div>
