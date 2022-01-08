@@ -1,11 +1,15 @@
 import React from 'react';
 import './Message.css';
-
+import { useDispatch } from 'react-redux';
+import {zoomState} from "../../reducers/isZoom";
+import { GoFile } from "react-icons/go";
+import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
 
 const Message = ({ message: { user, text, color, client_id, message }, name, clientid }) => {
+    const dispatch = useDispatch();
 
     return(
-        <div>
+        <div style={{ position: "static" }}>
             {(text === "")?
             <div className="messageContainerAll">
                 <div className="messagetoall">
@@ -17,37 +21,44 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                 {(user === name  && client_id === clientid )?
                 <div className="messageContainer-end">
                     <div className="messagediv card-end card">
-                        {text.includes("data:image")?
-                        <img 
-                            style={{ maxWidth: "10em"}}
-                            src={text}
-                            alt={'media'}
-                        />
+                        {typeof(text) === "object" && text.data.includes("data:image")?
+                            <img
+                                style={{ maxWidth: "10em", cursor: "pointer"}}
+                                src={text.data}
+                                alt={'media'}
+                                onClick={() =>  {
+                                    dispatch(zoomState(text.data));
+                                }}
+                            />   
                         :
-                        text.includes("data:video")?
+                        typeof(text) === "object" && text.data.includes("data:video")?
                         <video 
                             style={{ maxWidth: "10em"}}
-                            src={text}
+                            src={text.data}
                             alt={'video'}
                             type='video/mp4'
                             controls={true}
                         />
                         :
-                        text.includes("data:text/plain")?
-                        <embed 
-                        style={{ maxWidth: "10em", overflow: "hidden !important" }}
-                        type={'text/html'}
-                        src={text}
-                        />
+                        typeof(text) === "object" && text.data.includes("data:text/plain")?
+                        <div onClick={() => dispatch(zoomState(text.data))} style={styles.msgdocument}>
+                            <GoFile size={60}></GoFile>
+                            <span>{text.name}</span>
+                        </div>
                         :
-                        text.includes("data:application/pdf")?
-                        <embed 
-                        style={{ maxWidth: "10em"}}
-                        type={"application/pdf"}
-                        src={text}
-                        />
+                        typeof(text) === "object" && text.data.includes("data:application/pdf")?
+                        <div onClick={() => dispatch(zoomState(text.data))} style={styles.msgdocument}>
+                            <BsFillFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <span>{text.name}</span>
+                            <p style={{ bottom: 0, right: 0, fontSize: 3, color: "grey" }}>Uploaded</p>
+                        </div>
                         :
                         <p>{text}</p>
+                        }
+                        {typeof(text) === "object"?
+                        <p style={{ position: "absolute", bottom: "-1.5em", right: "1em", fontSize: 10, color: "#686b69" }}>Uploaded</p>    
+                        :
+                        null
                         }
                     </div>
                 </div>
@@ -55,37 +66,47 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                 <div className="messageContainer-start d-flex justify-content-start">
                     <div className="messagediv card-start card">
                         <p className="div-name" style={{color: `${color}`}}>{user}</p>
-                        {text.includes("data:image")?
+                        {typeof(text) === "object" && text.data.includes("data:image")?
                         <div>
                             <img 
-                                style={{ maxWidth: "8em" }}
-                                src={text}
+                                style={{ maxWidth: "8em", marginBottom: "3px" }}
+                                src={text.data}
                                 alt={'media'}
                             />
+                            <div className="btn-group" role="group" aria-label="Basic example">
+                                <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
+                                <button className={"btn btn-light btn-sm"} onClick={() => dispatch(zoomState(text.data))}>View</button>
+                            </div>
                         </div>
                         :
-                        text.includes("data:video")?
+                        typeof(text) === "object" && text.data.includes("data:video")?
                         <video 
                             style={{ maxWidth: "8em"}}
-                            src={text}
+                            src={text.data}
                             alt={'video'}
                             type='video/mp4'
                             controls={true}
                         />
                         :
-                        text.includes("data:text/plain")?
-                        <embed 
-                        style={{ maxWidth: "8em", overflow: "hidden !important" }}
-                        type={'text/html'}
-                        src={text}
-                        />
+                        typeof(text) === "object" && text.data.includes("data:text/plain")?
+                        <div>
+                            <GoFile size={60}></GoFile>
+                            <p>{text.name}</p>
+                            <div className="btn-group" role="group" aria-label="Basic example">
+                                <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
+                                <button className={"btn btn-light btn-sm"} onClick={() => dispatch(zoomState(text.data))}>View</button>
+                            </div>
+                        </div>
                         :
-                        text.includes("data:application/pdf")?
-                        <embed 
-                        style={{ maxWidth: "8em"}}
-                        type={"application/pdf"}
-                        src={text}
-                        />
+                        typeof(text) === "object" && text.data.includes("data:application/pdf")?
+                        <div>
+                            <BsFillFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <p>{text.name}</p>
+                            <div className="btn-group" role="group" aria-label="Basic example">
+                                <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
+                                <button className={"btn btn-light btn-sm"} onClick={() => dispatch(zoomState(text.data))}>View</button>
+                            </div>
+                        </div>
                         :
                         <p>{text}</p>
                         }
@@ -96,6 +117,19 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
             }    
         </div> 
     );
+}
+
+const styles = {
+    msgdocument: { 
+        borderRadius: 8,
+        backgroundColor: 'white', 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: "center", 
+        flexDirection: "column",
+        cursor: "pointer"
+    }
+    
 }
 
 export default Message;

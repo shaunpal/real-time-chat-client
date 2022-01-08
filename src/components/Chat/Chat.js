@@ -4,9 +4,11 @@ import io from 'socket.io-client';
 import './Chat.css';
 import Screen  from '../Screen/Screen';
 import { FaUser, FaUpload } from 'react-icons/fa';
+import { BiX } from "react-icons/bi";
 import Dropzone from 'react-dropzone';
-
-
+import ZoomWindow from '../ZoomWindow/ZoomWindow';
+import { useSelector, useDispatch } from 'react-redux';
+import { normState } from "../../reducers/isZoom";
 
 let socket;
 
@@ -18,6 +20,9 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState([]);
     const ENDPOINT = "https://real-time-chat-server.herokuapp.com/";
     const extensions = ["txt", "jpeg", "jpg", "png", "mp3", "mp4", "gif", "pdf"];
+    const zoomimg = useSelector(state => state.img);
+    const zoomshow = useSelector(state => state.show);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const { name } = queryString.parse(location.search);
@@ -53,7 +58,7 @@ const Chat = ({ location }) => {
             setUsers(users);
         })
     }, [users]);
-
+    
     const sendMessage = (event) => {
         event.preventDefault();
         if(message)
@@ -66,18 +71,25 @@ const Chat = ({ location }) => {
             if(extensions.includes(ext)){
                 let reader = new FileReader();
                 reader.readAsDataURL(files[i]);
+                
                 // eslint-disable-next-line
                 reader.onloadend = (evt) => {
-                    socket.emit('sendMessage', evt.target.result, () => setMessage(''));
+                    var file = {};
+                    file.name = files[i].name
+                    file.data = evt.target.result
+                    socket.emit('sendMessage', file, () => setMessage(''));
                 }
             }
         }
-        
-
     }
     return(
-        <div className="outerContainer">
-            <div className="memberContainer card">
+        <div style={{ height: "inherit" }}>
+        <ZoomWindow img={zoomimg} isOpen={zoomshow} />
+        <BiX style={zoomshow? styles.closebtn : styles.notZoom } size={40} onClick={() =>  {
+                                    dispatch(normState());
+                                }}/>
+        <div className={!zoomshow? "outerContainer": "hidediv"}>
+            <div className={!zoomshow? "memberContainer card" : "hidediv"}>
             <span className="member-heading card-header"><h1>ChatterBox</h1></span>
                 <div className="member">
                     {users.map((user) => (
@@ -89,7 +101,7 @@ const Chat = ({ location }) => {
                     ))}
                 </div>
             </div>
-            <div className="card">
+            <div style={{ position: "static" }} className="card">
                 <div className="container chat-container">
 
                 <Screen className="screen-container" messages={messages} name={name} clientid={id} />
@@ -112,14 +124,31 @@ const Chat = ({ location }) => {
                             )}
                             </Dropzone>
                         </button>
-                        <button className="btn btn-outline-secondary" type="button"
+                        <button className="btn btn-secondary" type="button"
                         onClick={event => message !== ""? sendMessage(event) : null}>Send</button>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
+       </div>
     );
 };
+
+const styles = {
+    closebtn: {
+        color: "white",
+        size: "10",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 3,
+        cursor: "pointer"
+    },
+    notZoom: {
+        display: "none",
+        visibility: "hidden"
+    },
+}
 
 export default Chat;

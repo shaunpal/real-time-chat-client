@@ -3,6 +3,7 @@
     height: 420px;
     background-image: url('../../images/double-bubble-bg.png');
     background-size: cover;
+    position: static;
 }
 
 @media screen and (max-width: 842px) {
@@ -11,5 +12,6 @@
         height: 420px;
         background-image: url('../../images/double-bubble-bg.png');
         background-size: cover;
+        position: static;
     }
 }

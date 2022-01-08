@@ -24,6 +24,7 @@
 .messageContainer-end{
     display: flex;
     justify-content: flex-end;
+    margin-bottom: .2em;
 }
 .messageContainer-start p {
     padding: 0;
@@ -49,4 +50,8 @@
 }
 p.div-name {
     top: 0;
+}
+#root,html, body {
+    width: 100%;
+    height: 100%;
 }

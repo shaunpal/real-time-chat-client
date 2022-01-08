@@ -4,10 +4,11 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import './Screen.css';
 
 const Screen = ({ messages, name, clientid }) => {
+
    return (
     <ScrollToBottom className="chat-container-screen">
         {messages.map((message, idx) => (
-        <div key={idx}>
+        <div key={idx} style={{ position: "static" }}>
             <Message message={message} name={name} clientid={clientid} />
         </div>
         ))}
