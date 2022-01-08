@@ -2,8 +2,7 @@ import React from 'react';
 import './Message.css';
 import { useDispatch } from 'react-redux';
 import {zoomState} from "../../reducers/isZoom";
-import { GoFile } from "react-icons/go";
-import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import { GoFile, GoFilePdf, GoCheck } from "react-icons/go";
 
 const Message = ({ message: { user, text, color, client_id, message }, name, clientid }) => {
     const dispatch = useDispatch();
@@ -48,14 +47,14 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div onClick={() => dispatch(zoomState(text.data))} style={styles.msgdocument}>
-                            <BsFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <GoFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <span>{text.name}</span>
                         </div>
                         :
                         <p>{text}</p>
                         }
                         {typeof(text) === "object"?
-                        <p style={{ position: "absolute", bottom: "-1.5em", right: "1em", fontSize: 10, color: "#686b69" }}>Uploaded</p>    
+                        <p style={{ position: "absolute", bottom: "-1.5em", right: "1em", fontSize: 10, color: "#686b69" }}>Uploaded <GoCheck size={10}/></p>    
                         :
                         null
                         }
@@ -99,7 +98,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div>
-                            <BsFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <GoFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <p>{text.name}</p>
                             <div className="btn-group" role="group" aria-label="Basic example">
                                 <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
