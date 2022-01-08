@@ -3,7 +3,7 @@ import './Message.css';
 import { useDispatch } from 'react-redux';
 import {zoomState} from "../../reducers/isZoom";
 import { GoFile } from "react-icons/go";
-import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import { BsFileEarmarkPdfFill } from "react-icons/bs";
 
 const Message = ({ message: { user, text, color, client_id, message }, name, clientid }) => {
     const dispatch = useDispatch();
@@ -48,9 +48,8 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div onClick={() => dispatch(zoomState(text.data))} style={styles.msgdocument}>
-                            <BsFillFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <BsFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <span>{text.name}</span>
-                            <p style={{ bottom: 0, right: 0, fontSize: 3, color: "grey" }}>Uploaded</p>
                         </div>
                         :
                         <p>{text}</p>
@@ -100,7 +99,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div>
-                            <BsFillFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <BsFileEarmarkPdfFill style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <p>{text.name}</p>
                             <div className="btn-group" role="group" aria-label="Basic example">
                                 <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
