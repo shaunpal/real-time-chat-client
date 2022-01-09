@@ -9,6 +9,8 @@ import Dropzone from 'react-dropzone';
 import ZoomWindow from '../ZoomWindow/ZoomWindow';
 import { useSelector, useDispatch } from 'react-redux';
 import { normState } from "../../reducers/isZoom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let socket;
 
@@ -79,11 +81,22 @@ const Chat = ({ location }) => {
                     file.data = evt.target.result
                     socket.emit('sendMessage', file, () => setMessage(''));
                 }
+            }else {
+                toast.error(`Unable to upload: ${files[i].name}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
         }
     }
     return(
         <div style={{ height: "inherit" }}>
+        <ToastContainer />
         <ZoomWindow img={zoomimg} isOpen={zoomshow} />
         <BiX style={zoomshow? styles.closebtn : styles.notZoom } size={40} onClick={() =>  {
                                     dispatch(normState());
