@@ -3,7 +3,7 @@ import './Message.css';
 import { useDispatch } from 'react-redux';
 import {zoomState} from "../../reducers/isZoom";
 import { GoFile, GoCheck } from "react-icons/go";
-import { FaFilePdf } from "react-icons/fa6";
+import { FaFilePdf } from "react-icons/fa";
 
 const Message = ({ message: { user, text, color, client_id, message }, name, clientid }) => {
     const dispatch = useDispatch();
