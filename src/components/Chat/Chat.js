@@ -20,7 +20,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
-    const ENDPOINT = "https://real-time-chat-server-alpha.vercel.app/";
+    const ENDPOINT = "https://realtimechatserver-1zuu500d.b4a.run/";
     const extensions = ["txt", "jpeg", "jpg", "png", "mp3", "mp4", "gif", "pdf"];
     const zoomimg = useSelector(state => state.img);
     const zoomshow = useSelector(state => state.show);
