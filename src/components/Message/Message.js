@@ -2,7 +2,8 @@ import React from 'react';
 import './Message.css';
 import { useDispatch } from 'react-redux';
 import {zoomState} from "../../reducers/isZoom";
-import { GoFile, GoFilePdf, GoCheck } from "react-icons/go";
+import { GoFile, GoCheck } from "react-icons/go";
+import { FaFilePdf } from "react-icons/fa6";
 
 const Message = ({ message: { user, text, color, client_id, message }, name, clientid }) => {
     const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div onClick={() => dispatch(zoomState(text.data))} style={styles.msgdocument}>
-                            <GoFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <FaFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <span>{text.name}</span>
                         </div>
                         :
@@ -98,7 +99,7 @@ const Message = ({ message: { user, text, color, client_id, message }, name, cli
                         :
                         typeof(text) === "object" && text.data.includes("data:application/pdf")?
                         <div>
-                            <GoFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
+                            <FaFilePdf style={{ color: "#c40a0a", marginTop: "3px" }} size={60}/>
                             <p>{text.name}</p>
                             <div className="btn-group" role="group" aria-label="Basic example">
                                 <a href={text.data} download={text.name}><button className={"btn btn-light btn-sm"}>Download</button></a>
