@@ -1,0 +1,58 @@
+
+Djavascript:S6774"('message' is missing in props validation(ÀñæĞ
+Ijavascript:S6774"-'message.user' is missing in props validation(ÀñæĞ
+Ijavascript:S6774"-'message.text' is missing in props validation(ÀñæĞ
+Jjavascript:S6774".'message.color' is missing in props validation(ÀñæĞ
+Njavascript:S6774"2'message.client_id' is missing in props validation(ÀñæĞ
+Ljavascript:S6774"0'message.message' is missing in props validation(ÀñæĞ
+Ajavascript:S6774"%'name' is missing in props validation(ÀñæĞ
+Ejavascript:S6774")'clientid' is missing in props validation(ÀñæĞ
+pjavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 51 to the 15 allowed.(ÀñæĞ
+Njavascript:S6774"2'message.text.data' is missing in props validation(­˜™Œ
+Wjavascript:S6774";'message.text.data.includes' is missing in props validation(­˜™Œ
+{javascript:S1082"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(Æœ¢Ã
+Njavascript:S6774"2'message.text.data' is missing in props validation(Â©İ„
+Sjavascript:S6774"2'message.text.data' is missing in props validation(ˆŒ”¥øÿÿÿÿ
+_javascript:S3358""DExtract this nested ternary operation into an independent statement.(ÚÙÆY
+Mjavascript:S6774""2'message.text.data' is missing in props validation(ÚÙÆY
+Vjavascript:S6774"";'message.text.data.includes' is missing in props validation(ÚÙÆY
+Njavascript:S6774%"2'message.text.data' is missing in props validation(Â©İ„
+ejavascript:S3358+"DExtract this nested ternary operation into an independent statement.(²¦•ùÿÿÿÿ
+Sjavascript:S6774+"2'message.text.data' is missing in props validation(²¦•ùÿÿÿÿ
+\javascript:S6774+";'message.text.data.includes' is missing in props validation(²¦•ùÿÿÿÿ
+{javascript:S1082,"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(”òç›
+Njavascript:S6774,"2'message.text.data' is missing in props validation(”òç›
+Njavascript:S6774."2'message.text.name' is missing in props validation(°—›Ê
+`javascript:S33581"DExtract this nested ternary operation into an independent statement.(Äß­É
+Njavascript:S67741"2'message.text.data' is missing in props validation(Äß­É
+Wjavascript:S67741";'message.text.data.includes' is missing in props validation(Äß­É
+{javascript:S10822"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(”òç›
+Njavascript:S67742"2'message.text.data' is missing in props validation(”òç›
+Njavascript:S67744"2'message.text.name' is missing in props validation(°—›Ê
+Njavascript:S6774D"2'message.text.data' is missing in props validation(­˜™Œ
+Wjavascript:S6774D";'message.text.data.includes' is missing in props validation(­˜™Œ
+Njavascript:S6774H"2'message.text.data' is missing in props validation(Â©İ„
+œjavascript:S6819K"{Use <details>, <fieldset>, <optgroup>, or <address> instead of the "group" role to ensure accessibility across all devices.(òºÌ»şÿÿÿÿ
+Njavascript:S6774L"2'message.text.data' is missing in props validation(¿ƒøè
+Njavascript:S6774L"2'message.text.name' is missing in props validation(¿ƒøè
+Mjavascript:S6774M"2'message.text.data' is missing in props validation(âµ¼:
+_javascript:S3358Q"DExtract this nested ternary operation into an independent statement.(ÚÙÆY
+Mjavascript:S6774Q"2'message.text.data' is missing in props validation(ÚÙÆY
+Vjavascript:S6774Q";'message.text.data.includes' is missing in props validation(ÚÙÆY
+Njavascript:S6774T"2'message.text.data' is missing in props validation(Â©İ„
+ejavascript:S3358Z"DExtract this nested ternary operation into an independent statement.(²¦•ùÿÿÿÿ
+Sjavascript:S6774Z"2'message.text.data' is missing in props validation(²¦•ùÿÿÿÿ
+\javascript:S6774Z";'message.text.data.includes' is missing in props validation(²¦•ùÿÿÿÿ
+Sjavascript:S6774]"2'message.text.name' is missing in props validation(ë¸ûûÿÿÿÿ
+œjavascript:S6819^"{Use <details>, <fieldset>, <optgroup>, or <address> instead of the "group" role to ensure accessibility across all devices.(òºÌ»şÿÿÿÿ
+Njavascript:S6774_"2'message.text.data' is missing in props validation(¿ƒøè
+Njavascript:S6774_"2'message.text.name' is missing in props validation(¿ƒøè
+Mjavascript:S6774`"2'message.text.data' is missing in props validation(âµ¼:
+`javascript:S3358d"DExtract this nested ternary operation into an independent statement.(Äß­É
+Njavascript:S6774d"2'message.text.data' is missing in props validation(Äß­É
+Wjavascript:S6774d";'message.text.data.includes' is missing in props validation(Äß­É
+Sjavascript:S6774g"2'message.text.name' is missing in props validation(ë¸ûûÿÿÿÿ
+œjavascript:S6819h"{Use <details>, <fieldset>, <optgroup>, or <address> instead of the "group" role to ensure accessibility across all devices.(òºÌ»şÿÿÿÿ
+Njavascript:S6774i"2'message.text.data' is missing in props validation(¿ƒøè
+Njavascript:S6774i"2'message.text.name' is missing in props validation(¿ƒøè
+Mjavascript:S6774j"2'message.text.data' is missing in props validation(âµ¼:
